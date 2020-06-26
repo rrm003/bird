@@ -2,8 +2,8 @@ language: go
 
 install: true
 script:
-    -ls
-    -go run main.go
+    - ls
+    - go run main.go
 #    -go vet $(go list ./... | grep -v vendor)
 #    -cd birdpedia && go build
     

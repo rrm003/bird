@@ -1,6 +1,7 @@
-language: go
+sudo: required
 services: 
     -docker
+language: go
 install: true
 script:
     - go vet $(go list ./... | grep -v vendor)
@@ -10,4 +11,4 @@ after_success:
     - if [ -n "${TRAVIS_TAG}" ] ; then
         docker login -u="${DOCKER_USER}" -p="${DOCKER_PASSWORD}";
         docker push birdpedia:$TRAVIS_BRANCH;
-    fi
+      fi

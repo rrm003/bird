@@ -3,7 +3,6 @@ services:
     -docker
 install: true
 script:
-
     - go vet $(go list ./... | grep -v vendor)
     - go build .
     - docker image build -t birdpedia:$TRAVIS_BRANCH 

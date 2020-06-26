@@ -1,16 +1,7 @@
-FROM golang:onbuild
-# install dep
-RUN go get github.com/golang/dep/cmd/dep
-# create a working directory
-WORKDIR /go/src/github.com/rrm003/birdpedia
-# add Gopkg.toml and Gopkg.lock
-ADD Gopkg.toml Gopkg.toml
-ADD Gopkg.lock Gopkg.lock
-# install packages
-# --vendor-only is used to restrict dep from scanning source code
-# and finding dependencies
-RUN dep ensure --vendor-only
-# add source code
-ADD src src
-# run main.go
-CMD ["go", "run", "src/main.go"]
+FROM debian
+COPY birdpedia /birdpedia
+RUN useradd birdpedia
+USER birdpedia
+ENV LISTEN_URL=0.0.0.0:8090
+EXPOSE 8181
+CMD ["/eventservice"]

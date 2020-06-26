@@ -1,0 +1,10 @@
+language: go
+go : 
+    -1.14.3
+install: true
+script:
+    -go build
+scripts:
+    - go vet $(go list ./... | grep -v vendor)
+    -cd birdpedia && go build
+    

@@ -5,6 +5,6 @@ install: true
 script:
     -go build
 scripts:
-    - go vet $(go list ./... | grep -v vendor)
+    -go vet $(go list ./... | grep -v vendor)
     -cd birdpedia && go build
     

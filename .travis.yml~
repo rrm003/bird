@@ -10,5 +10,5 @@ script:
 after_success:
     - if [ -n "${TRAVIS_TAG}" ] ; then
         docker login -u="${DOCKER_USER}" -p="${DOCKER_PASSWORD}";
-        docker push birdpedia:$TRAVIS_BRANCH;
+        docker push birdpedia;
       fi
